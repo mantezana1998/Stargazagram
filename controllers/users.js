@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/users');
 const { v4: uuidv4 } = require('uuid');
 const S3 = require('aws-sdk/clients/s3');
 const s3 = new S3();

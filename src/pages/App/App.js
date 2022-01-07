@@ -8,6 +8,9 @@ import SignupPage from '../SignupPage/SignupPage';
 
 export default function App() {
   return (
-    <SignupPage />
+    <Routes>
+      <Route path='/' element={<h1>Home Page</h1>}/>
+      <Route path='/signup' element={<SignupPage/>}/>
+    </Routes>
   );
 }
