@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SignupPage from '../SignupPage/SignupPage';
-// import LoginPage from '../LoginPage';
+import LoginPage from '../LoginPage/LoginPage';
 // import Feed from '../Feed';
 // import Layout from '../Layout';
 
@@ -11,6 +11,7 @@ export default function App() {
     <Routes>
       <Route path='/' element={<h1>Home Page</h1>}/>
       <Route path='/signup' element={<SignupPage/>}/>
+      <Route path='/login' element={<LoginPage />} />
     </Routes>
   );
 }

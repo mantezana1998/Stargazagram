@@ -1,0 +1,23 @@
+* {
+    background-color: #7649fe !important;
+}
+
+#message {
+    background-color: #ba1e68 !important;
+    color: #1d1135 !important;
+}
+
+#header {
+    font-size: 30px !important;
+    color: #1d1135 !important;
+    text-align: center !important;
+}
+
+#button {
+    background-color: #ba1e68 !important;
+    color: #1d1135 !important; 
+}
+
+a {
+    color: #1d1135 !important;
+}
