@@ -8,6 +8,6 @@ import SignupPage from '../SignupPage/SignupPage';
 
 export default function App() {
   return (
-    <h1>Hello World!</h1>
+    <SignupPage />
   );
 }
