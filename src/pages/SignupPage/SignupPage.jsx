@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import '../SignupPage/SignupPage.css'
+import userService from '../../utils/userService'
 
 export default function SignUpPage (){
-
+  const [selectedFile, setSelectedFile] = ('');
   const [state, setState] = useState({
     username: '',
     email: '',
@@ -16,6 +17,11 @@ export default function SignUpPage (){
     const name = e.target.name
     const value = e.target.value
     setState({...setState, [name] : [value]})
+  }
+
+  function handleFileInput(e){
+    console.log(e.target.files)
+    setSelectedFile(e.target.files[0])
   }
 
   return (
@@ -68,7 +74,7 @@ export default function SignUpPage (){
              type="file"
              name="photo"
              placeholder="upload image"
-            //  onChange={handleFileInput}
+             onChange={handleFileInput}
            />
          </Form.Field>
          <Button type="submit" id='button'>
