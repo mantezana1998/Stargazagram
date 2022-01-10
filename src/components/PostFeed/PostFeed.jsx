@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Icon, Image } from 'semantic-ui-react'
 
-export default function PostFeed (){
+export default function PostFeed (props){
     return (
-        <Card>
-            <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+        <Card itemsPerRow={3}>
+            <Image src='' wrapped ui={false} />
             <Card.Content>
                 <Card.Header>Matthew</Card.Header>
                 <Card.Meta>
