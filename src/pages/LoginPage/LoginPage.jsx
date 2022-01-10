@@ -2,14 +2,14 @@ import React, {useState} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import '../LoginPage/LoginPage.css'
 
-export default function SignUpPage (){
+export default function LoginPage (){
   return(
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header id='header'>
         <Image src='https://i.imgur.com/WsX89jL.jpg' /> Login into Star Gazing
       </Header>
-      <Form>
+      <Form autoComplete="off">
         <Segment stacked>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
           <Form.Input

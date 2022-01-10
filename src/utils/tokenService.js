@@ -1,59 +1,35 @@
-import tokenService from './tokenService';
-
-const BASE_URL = '/api/users/';
-
-function signup(user) {
-  return fetch(BASE_URL + 'signup', {
-    method: 'POST',
-    body: user 
-  })
-  .then(res => {
-    if (res.ok) return res.json();
-    console.log("if you have an error, you must check your server terminal!")
-    throw new Error('Email already taken!');
-  })
-  .then(({token}) => tokenService.setToken(token));
-}
-
-function getUser() {
-  return tokenService.getUserFromToken();
-}
-
-function logout() {
-  tokenService.removeToken();
-}
-
-function login(creds) {
-  console.log(creds, '<--Creds')
-  return fetch(BASE_URL + 'login', {
-    method: 'POST',
-    headers: new Headers({'Content-Type': 'application/json'}),
-    body: JSON.stringify(creds) 
-  })
-  .then(res => {
-    if (res.ok) return res.json();
-    throw new Error('Bad Credentials!');
-  })
-  .then(({token}) => tokenService.setToken(token));
-}
-
-
-function getProfile(username){
-  return fetch(BASE_URL + username, {
-    headers: {
-      'Authorization': 'Bearer ' + tokenService.getToken()
+function setToken(token) {
+    if (token) {
+      localStorage.setItem('token', token);
+    } else {
+      localStorage.removeItem('token');
+    }
+  }
+  
+  function getToken() {
+    let token = localStorage.getItem('token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      if (payload.exp < Date.now() / 1000) {
+        localStorage.removeItem('token');
+        token = null;
       }
-  }).then(res => {
-    if(res.ok) return res.json()
-    if(res.status === 404) throw new Error('User not Found')
-    throw new Error('Bad Credentials') 
-  })
-}
-
-export default {
-  signup, 
-  getUser,
-  logout,
-  login,
-  getProfile
-};
+    }
+    return token;
+  }
+  
+  function getUserFromToken() {
+    const token = getToken();
+    return token ? JSON.parse(atob(token.split('.')[1])).user : null;
+  }
+  
+  function removeToken() {
+    localStorage.removeItem('token');
+  }
+  
+  export default {
+    setToken,
+    getToken,
+    removeToken,
+    getUserFromToken
+  };
