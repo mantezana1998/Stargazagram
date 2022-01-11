@@ -12,10 +12,11 @@ export default function App() {
 
   useEffect (() => {
     const nasaUrl = `https://api.nasa.gov/planetary/apod?api_key=87IOLNN8rbuKQxLzMCDoLLefPb4tfofbuNfZXv57&start_date=2021-12-01`
-
+    
     fetch(nasaUrl)
     .then((res) => res.json())
-    .then(({data}) => {
+    .then((data) => {
+      console.log(data, 'this is the data')
       setNasa(data)
     }).catch((err) => {
       console.log(err, 'err on app.js')

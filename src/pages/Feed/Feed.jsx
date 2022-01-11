@@ -1,8 +1,9 @@
 import { Grid } from "semantic-ui-react";
 import PostFeed from '../../components/PostFeed/PostFeed'
 
-export default function Layout({user, handleLogout}) {
+export default function Layout(props) {
   return (
+    <>
     <Grid centered>
     <Grid.Row>
       <Grid.Column style={{ maxWidth: 450 }}>
@@ -10,9 +11,10 @@ export default function Layout({user, handleLogout}) {
     </Grid.Row>
     <Grid.Row>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <PostFeed />
+        <PostFeed data={props.data}/>
       </Grid.Column>
     </Grid.Row>
   </Grid>
+  </>
   );
 }

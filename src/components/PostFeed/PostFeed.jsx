@@ -1,25 +1,41 @@
 import React from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image } from 'semantic-ui-react';
+import { Link } from "react-router-dom";
 
 export default function PostFeed (props){
+
     return (
-        <Card itemsPerRow={3}>
-            <Image src='' wrapped ui={false} />
-            <Card.Content>
-                <Card.Header>Matthew</Card.Header>
-                <Card.Meta>
-                <span className='date'>Joined in 2015</span>
-                </Card.Meta>
+    <>
+        {props.data && props.data.map((nasa) => {
+            return (
+                <Card raised>
+                <Card.Content textAlign="left">
+                  <Card.Header>
+                    <Link to={nasa.url}>
+                      <Image
+                        size="large"
+                        avatar
+                        src={nasa.hdurl}
+                      />
+                    </Link>
+                    {nasa.title}
+                  </Card.Header>
+                </Card.Content>
+              <Image src={nasa.url} wrapped ui={false} />
+              <Card.Content>
                 <Card.Description>
-                Matthew is a musician living in Nashville.
+                    {nasa.explanation}
                 </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-                <a>
-                <Icon name='user' />
-                22 Friends
-                </a>
-            </Card.Content>
-        </Card>
+              </Card.Content>
+              <Card.Content>
+                  Created on: {nasa.date}
+              </Card.Content>
+              <Card.Content extra textAlign={"right"}>
+                <Icon name={"heart"} size="large"/>
+                 Likes
+              </Card.Content>
+            </Card>
+            )})} 
+    </>
     )
 }
