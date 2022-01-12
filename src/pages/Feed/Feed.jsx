@@ -1,7 +1,9 @@
+import React from 'react';
 import { Grid } from "semantic-ui-react";
 import PostFeed from '../../components/PostFeed/PostFeed'
 
 export default function Layout(props) {
+
   return (
     <>
     <Grid centered>

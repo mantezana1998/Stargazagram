@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactLoading from 'react-loading';
+import PostFeed from '../PostFeed/PostFeed';
 
 export default function Loading(){
 
@@ -7,21 +8,21 @@ export default function Loading(){
     const [done, setDone] = useState(undefined)
 
     useEffect (() => { 
-        fetch('https://jsonplaceholder.typicode.com/posts/1')
-        .then((response) => response.json())
-        .then((json) => {
-            setData(json);
-            setDone(true)
-    })});
+    setTimeout(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then((response) => response.json())
+    .then((json) => {
+        setData(json);
+        setDone(true)
+        })
+    }, 2000)
+}, []);
 
     return(
     <>
-        <ReactLoading 
-        type={'bubble'} 
-        color={'black'} 
-        height={200} 
-        width={200} 
-        />
+    {
+        !done ? (<ReactLoading type={'bars'} color={'black'} height={200} width={200} />) : (<h1>Your data</h1>)
+    }
     </>
     )
 }

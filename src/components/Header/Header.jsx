@@ -4,8 +4,8 @@ export default function Header (){
     return(
       <div class="ui segment">
         <div class="ui secondary menu">
-          <a class="item active">
-              Home
+          <a class="item active" href='/feed'>
+              Feed
           </a>
           <a class="item">
             Logout 
