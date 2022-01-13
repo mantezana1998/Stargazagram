@@ -19,7 +19,7 @@ export default function App() {
     fetch(nasaUrl)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data, 'this is the data')
+      // console.log(data, 'this is the data')
       setNasa(data)
     }).catch((err) => {
       console.log(err, 'err on app.js')
@@ -30,15 +30,13 @@ export default function App() {
     setUser(userService.getUser())
   }
 
-  console.log(user, 'this is the user')
-
   return (
     <Routes>
       <Route path='/' element={<Layout user={user} />}>
         <Route index element={<Feed data={nasa} user={user} />} />
         <Route path='/loading' element={<Loading />}/>
         <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/login' element={<LoginPage handleSignupOrLogin={handleSignupOrLogin} />} />
       </Route>
     </Routes>
   );

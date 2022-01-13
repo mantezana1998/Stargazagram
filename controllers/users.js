@@ -6,7 +6,8 @@ const S3 = require("aws-sdk/clients/s3");
 const s3 = new S3(); 
 
 module.exports = {
-    signup
+    signup,
+    login
 }
 
 async function signup(req, res) {
@@ -31,6 +32,26 @@ async function signup(req, res) {
       }
     });
   }
+
+async function login(req, res){
+  try {
+    const user = await User.findOne({email: req.body.email});
+
+    if (!user) return res.status(401).json({err: 'bad credentials'});
+    user.comparePassword(req.body.password, (err, isMatch) => {
+      console.log(req.body, '------------------')
+      if (isMatch) {
+        const token = createJWT(user);
+        
+        res.json({token});
+      } else {
+        return res.status(401).json({err: 'bad credentials'});
+      }
+    });
+  } catch (err) {
+    return res.status(401).json(err);
+  }
+}
 
 function createJWT(user){
     return jwt.sign(
