@@ -6,7 +6,6 @@ import Loading from '../../components/Loading/Loading'
 export default function PostFeed (props){
   return (
   <>
-  <Loading />
   {props.data && props.data.map((nasa) => {
     return (
       <Card>
