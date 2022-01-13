@@ -36,7 +36,7 @@ const [state, setState] = useState({
     }
     try {
       await userService.signup(formData);
-      props.handleSignUpOrLogin()
+      props.handleSignupOrLogin()
       navigate('/feed')
     }catch(err){
       console.log(err.message)
