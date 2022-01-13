@@ -30,9 +30,14 @@ export default function App() {
     setUser(userService.getUser())
   }
 
+  function handleLogout(){
+    userService.logout();
+    setUser(null)
+  }
+
   return (
     <Routes>
-      <Route path='/' element={<Layout user={user} />}>
+      <Route path='/' element={<Layout user={user} handleLogout/>}>
         <Route index element={<Feed data={nasa} user={user} />} />
         <Route path='/loading' element={<Loading />}/>
         <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>

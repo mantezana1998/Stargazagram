@@ -7,7 +7,7 @@ export default function Header (props){
         <a class="item">Hello, {props.user.username}</a>
         <div class="right menu">
         <a class="item">Feed</a>
-          <a class="item">Logout</a>
+          <a class="item" href='/login' onClick={props.handleLogout}>Logout</a>
         </div>
       </div>
     )

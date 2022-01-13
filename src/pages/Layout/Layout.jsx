@@ -7,7 +7,7 @@ export default function Layout(props) {
     <Grid>
       <Grid.Row>
         <Grid.Column>
-          <Header user={props.user}/>
+          <Header user={props.user} handleLogout={props.handleLogout}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
