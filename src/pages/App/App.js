@@ -30,9 +30,11 @@ export default function App() {
     setUser(userService.getUser())
   }
 
+  console.log(user, 'this is the user')
+
   return (
     <Routes>
-      <Route path='/' element={<Layout />}>
+      <Route path='/' element={<Layout user={user} />}>
         <Route index element={<Feed data={nasa} user={user} />} />
         <Route path='/loading' element={<Loading />}/>
         <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>

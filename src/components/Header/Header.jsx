@@ -1,15 +1,13 @@
 import React from 'react';
 
-export default function Header (){
+export default function Header (props){
     return(
-      <div class="ui segment">
-        <div class="ui secondary menu">
-          <a class="item active" href='/'>
-              Feed
-          </a>
-          <a class="item">
-            Logout 
-          </a>
+      <div class="ui menu">
+        <a class='item'><img src={props.user.photoUrl}></img></a>
+        <a class="item">Hello, {props.user.username}</a>
+        <div class="right menu">
+        <a class="item">Feed</a>
+          <a class="item">Logout</a>
         </div>
       </div>
     )
