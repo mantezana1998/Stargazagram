@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactLoading from 'react-loading';
-import PostFeed from '../PostFeed/PostFeed';
+// import PostFeed from '../PostFeed/PostFeed';
 
 export default function Loading(){
 
@@ -21,7 +21,7 @@ export default function Loading(){
     return(
     <>
     {
-        !done ? (<ReactLoading type={'bars'} color={'black'} height={200} width={200} />) : (<h1>Your data</h1>)
+        !done ? (<ReactLoading type={'bars'} color={'black'} height={200} width={200} />) : ({data})
     }
     </>
     )

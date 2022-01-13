@@ -11,11 +11,9 @@ import userService from '../../utils/userService';
 export default function App() {
 
   const [nasa, setNasa] = useState([])
-  const [done, setDone] = useState(undefined)
   const [user, setUser] = useState(userService.getUser())
 
   useEffect (() => {
-    setTimeout(() => {
     const nasaUrl = `https://api.nasa.gov/planetary/apod?api_key=7Q1WSbEb5bRLEhI9qORlPb0AdnQ5iP59BKRIIx6o&start_date=2021-12-01`
     
     fetch(nasaUrl)
@@ -23,11 +21,9 @@ export default function App() {
     .then((data) => {
       console.log(data, 'this is the data')
       setNasa(data)
-      setDone(true)
     }).catch((err) => {
       console.log(err, 'err on app.js')
     });
-    }, 2000)
   }, [])
 
   function handleSignupOrLogin (){
