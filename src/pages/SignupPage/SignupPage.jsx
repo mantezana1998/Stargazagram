@@ -8,14 +8,14 @@ import ErrorMessage from '../../components/ErrorMessage /ErrorMessage';
 export default function SignUpPage(props) {
 
 const navigate = useNavigate();  
-const [error, setError] = useState('');
-const[selectedFile, setSelectedFile] = useState('');
+const [error, setError] = useState("");
+const[selectedFile, setSelectedFile] = useState("");
 const [state, setState] = useState({
-  username: '',
-  email: '',
-  password: '',
-  passwordConf: '',
-  bio: '',
+  username: "",
+  email: "",
+  password: "",
+  passwordConf: "",
+  bio: "",
 });
 
   function handleChange(e){
@@ -37,7 +37,7 @@ const [state, setState] = useState({
     try {
       await userService.signup(formData);
       props.handleSignUpOrLogin()
-      navigate('/')
+      navigate('/feed')
     }catch(err){
       console.log(err.message)
       setError(err.message)

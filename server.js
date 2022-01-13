@@ -5,6 +5,7 @@ const logger = require('morgan');
 // const favicon = require('serve-favicon');
 
 const app = express();
+require('./config/auth');
 
 app.use(logger('dev'));
 app.use(express.json()); 

@@ -6,11 +6,13 @@ import LoginPage from '../LoginPage/LoginPage';
 import Feed from '../Feed/Feed';
 import Layout from '../Layout/Layout';
 import Loading from '../../components/Loading/Loading'
+import userService from '../../utils/userService';
 
 export default function App() {
 
   const [nasa, setNasa] = useState([])
   const [done, setDone] = useState(undefined)
+  const [user, setUser] = useState(userService.getUser())
 
   useEffect (() => {
     setTimeout(() => {
@@ -28,37 +30,16 @@ export default function App() {
     }, 2000)
   }, [])
 
-//   export default function Loading(){
-
-//     const [data, setData] = useState([])
-//     const [done, setDone] = useState(undefined)
-
-//     useEffect (() => { 
-//     setTimeout(() => {
-//     fetch('https://jsonplaceholder.typicode.com/posts/1')
-//     .then((response) => response.json())
-//     .then((json) => {
-//         setData(json);
-//         setDone(true)
-//         })
-//     }, 2000)
-// }, []);
-
-//     return(
-//     <>
-//     {
-//         !done ? (<ReactLoading type={'bars'} color={'black'} height={200} width={200} />) : (<h1>Your data</h1>)
-//     }
-//     </>
-//     )
-// }
+  function handleSignupOrLogin (){
+    setUser(userService.getUser())
+  }
 
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
-        <Route index element={<Feed data={nasa}/>} />
+        <Route index element={<Feed data={nasa} user={user} />} />
         <Route path='/loading' element={<Loading />}/>
-        <Route path='/signup' element={<SignupPage />}/>
+        <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>
         <Route path='/login' element={<LoginPage />} />
       </Route>
     </Routes>
