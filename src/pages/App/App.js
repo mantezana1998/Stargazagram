@@ -35,14 +35,22 @@ export default function App() {
     setUser(null)
   }
 
+  if(user){
   return (
     <Routes>
-      <Route path='/' element={<Layout user={user} handleLogout/>}>
+      <Route path='/' element={<Layout user={user} handleLogout={handleLogout}/>}>
         <Route index element={<Feed data={nasa} user={user} />} />
         <Route path='/loading' element={<Loading />}/>
         <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>
         <Route path='/login' element={<LoginPage handleSignupOrLogin={handleSignupOrLogin} />} />
       </Route>
     </Routes>
-  );
+    );
+  }
+  return(
+    <Routes>
+      <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>
+      <Route path='/login' element={<LoginPage handleSignupOrLogin={handleSignupOrLogin} />} />
+    </Routes>
+  )
 }

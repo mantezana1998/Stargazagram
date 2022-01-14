@@ -19,8 +19,6 @@ function getUser() {
   return tokenService.getUserFromToken();
 }
 
-console.log(getUser)
-
 function logout() {
   tokenService.removeToken();
 }

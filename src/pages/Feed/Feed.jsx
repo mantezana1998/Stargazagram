@@ -13,7 +13,9 @@ export default function Layout(props) {
     </Grid.Row>
     <Grid.Row>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <PostFeed data={props.data}/>
+        <PostFeed 
+        data={props.data}
+        />
       </Grid.Column>
     </Grid.Row>
   </Grid>

@@ -3,6 +3,12 @@ import { Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
 export default function PostFeed (props){
+
+function handleClick(e){
+  e.preventDefault();
+  e.target.style.color = 'red'
+}
+
   return (
   <>
   {props.data && props.data.map((nasa) => {
@@ -32,13 +38,13 @@ export default function PostFeed (props){
         <Card.Content>
           Created on: {nasa.date}
         </Card.Content>
-        <Card.Content extra textAlign={'left'}>
-          <Icon 
-          name={'heart'}
-          size='large'
-          />
-          Likes
-        </Card.Content>
+        <Card.Content extra textAlign={"right"}>
+        <Icon name={"heart"} 
+        size="large" 
+        onClick={handleClick}
+        />
+        Likes
+      </Card.Content>
       </Card>
       )
   })} 
