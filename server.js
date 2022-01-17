@@ -10,6 +10,7 @@ require('./config/config');
 app.use(logger('dev'));
 app.use(express.json()); 
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(require('./config/config'))
 app.use('/api/users', require('./routes/api/users'));
 
 app.get('/*', function(req, res) {
