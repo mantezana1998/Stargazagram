@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import userService from '../../utils/userService';
-import '../LoginPage/LoginPage.css'
+import ErrorMessage from '../../components/ErrorMessage /ErrorMessage'
+import '../LoginPage/LoginPage.css';
 
 export default function LoginPage (props) {
 
@@ -63,6 +64,7 @@ export default function LoginPage (props) {
             Login
           </Button>
         </Segment>
+        {error ? <ErrorMessage error={error} /> : null}
       </Form>
       <Message id='message'>
         Dont have an account? <a href='/signup'>Sign up</a>

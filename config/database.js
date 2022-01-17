@@ -15,4 +15,5 @@ db.on("connected", function () {
 
 db.on('error', function(err){
   console.log(`Mongodb error: ${err}`)
+  console.log({err})
 })
