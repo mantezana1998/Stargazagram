@@ -29,7 +29,7 @@ export default function LoginPage (props) {
       props.handleSignupOrLogin();
       navigate('/')
     }catch(err){
-      setError(err.mesage)
+      setError(err.message)
     }
   }
 
