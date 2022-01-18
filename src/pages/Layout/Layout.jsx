@@ -1,6 +1,7 @@
 import { Grid } from "semantic-ui-react";
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import './Layout'
 
 export default function Layout(props) {
   return (

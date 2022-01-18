@@ -5,7 +5,6 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import Feed from '../Feed/Feed';
 import Layout from '../Layout/Layout';
-import Loading from '../../components/Loading/Loading'
 import userService from '../../utils/userService';
 
 export default function App() {
@@ -40,7 +39,6 @@ export default function App() {
     <Routes>
       <Route path='/' element={<Layout user={user} handleLogout={handleLogout}/>}>
         <Route index element={<Feed data={nasa} user={user} />} />
-        <Route path='/loading' element={<Loading />}/>
         <Route path='/signup' element={<SignupPage handleSignupOrLogin={handleSignupOrLogin} />}/>
         <Route path='/login' element={<LoginPage handleSignupOrLogin={handleSignupOrLogin} />} />
       </Route>
